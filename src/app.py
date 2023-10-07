@@ -4,9 +4,11 @@ from dash_extensions.enrich import (
 )
 
 from src.infrastructure import application
+from src.presentation.blueprints import bp
 
 app: application.EncostDash = application.create(
-    transforms=[ServersideOutputTransform(), MultiplexerTransform()]
+    transforms=[ServersideOutputTransform(), MultiplexerTransform()],
+    blueprints=[bp],
 )
 
 if __name__ == "__main__":

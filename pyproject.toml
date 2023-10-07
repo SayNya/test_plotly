@@ -11,7 +11,6 @@ dash = "^2.13.0"
 pandas = "^2.1.1"
 dash-extensions = "^1.0.3"
 dash-mantine-components = "^0.12.1"
-pydantic = "^2.4.2"
 pydantic-settings = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]

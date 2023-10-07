@@ -1,12 +1,9 @@
 from typing import Iterable
 
-from dash_extensions.enrich import DashProxy, DashTransform
-
-from src.presentation.callback.callback import *  # noqa
+from dash import html
+from dash_extensions.enrich import DashBlueprint, DashProxy, DashTransform
 
 __all__ = ("create", "EncostDash")
-
-from src.presentation.layout.layout import get_layout
 
 
 class EncostDash(DashProxy):
@@ -18,7 +15,9 @@ class EncostDash(DashProxy):
         )
 
 
-def create(transforms: Iterable[DashTransform]) -> EncostDash:
+def create(
+    transforms: Iterable[DashTransform], blueprints: Iterable[DashBlueprint]
+) -> EncostDash:
     app = EncostDash(transforms=transforms, name=__name__)
-    app.layout = get_layout()
+    app.layout = html.Div([bp.embed(app) for bp in blueprints])
     return app
